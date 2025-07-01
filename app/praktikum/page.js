@@ -7,11 +7,11 @@ import PraktikumList from "./_Components/PraktikumList";
 // Fungsi untuk mengambil data dari API route internal kita
 async function getPraktikumFromAPI() {
   // 1. Ambil base URL dari environment variable.
-  // Jika tidak ada, gunakan string kosong untuk mencegah error.
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
   
-  // 2. Gabungkan base URL dengan path API untuk membuat URL absolut.
-  const apiUrl = `/api/praktikum`;
+  // 2. --- PERBAIKAN DI SINI ---
+  // Gabungkan baseUrl dengan path API untuk membuat URL absolut.
+  const apiUrl = `${baseUrl}/api/praktikum`;
 
   console.log(`[FETCH] Memanggil API di URL absolut: ${apiUrl}`);
 
@@ -30,6 +30,7 @@ async function getPraktikumFromAPI() {
   } catch (error) {
     // Log error yang lebih spesifik
     console.error("Error di dalam getPraktikumFromAPI:", error.message);
+    // Kembalikan array kosong agar halaman tidak crash
     return [];
   }
 }
@@ -39,10 +40,12 @@ async function getPraktikumFromAPI() {
 export default async function Praktikum() {
   
   const listPrak = await getPraktikumFromAPI();
-  console.log(listPrak)
+  
+  // Menambahkan properti imageUrl ke setiap item untuk digunakan di komponen client
   const dataWithImages = listPrak.map(item => ({
     ...item,
-    imageUrl: item.img_url || '/galeri/lkj.png'
+    // Jika item.img_url tidak ada, gunakan gambar default
+    imageUrl: item.img_url || '/galeri/lkj.png' 
   }));
 
   return (
@@ -57,6 +60,7 @@ export default async function Praktikum() {
           </p>
         </div>
 
+        {/* Melewatkan data yang sudah diproses ke komponen client */}
         <PraktikumList initialData={dataWithImages} />
         
       </div>
