@@ -1,101 +1,180 @@
+// app/page.js
+
+import Navbar from "./_Components/navbar";
+import GlassCont from "./_Components/glasscont";
+import MapComponent from "./_Components/map";
+import HomeFooter from "./_Components/homefooter";
 import Image from "next/image";
+import Link from "next/link";
+// --- PERBAIKAN DI SINI ---
+// Nama file harus cocok dengan file yang Anda buat: FloatingIconsBackground.js
+import FloatingIconsBackground from "./_Components/FloatingIcon";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.js
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="bg-slate-900 text-slate-300 w-full">
+      <Navbar />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+      <main>
+        {/* --- Hero Section dengan Glass UI --- */}
+        <section className="relative">
+          <FloatingIconsBackground />
+
+          {/* Konten GlassCont sebagai Overlay */}
+          <div className="relative z-10">
+            <GlassCont>
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  {/* Kolom Teks */}
+                  <div className="text-center lg:text-left space-y-6">
+                    <h1 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
+                      Selamat Datang di Laboratorium Komputer dan Jaringan
+                    </h1>
+                    <p className="text-lg text-slate-200 max-w-2xl mx-auto lg:mx-0">
+                      Pusat inovasi dan pembelajaran untuk mahasiswa dalam
+                      menguasai teknologi jaringan, pengembangan perangkat
+                      lunak, dan sistem komputer terkini.
+                    </p>
+                    <div className="flex justify-center lg:justify-start space-x-4 pt-4">
+                      <Link
+                        href="/praktikum"
+                        className="bg-cyan-500 hover:bg-cyan-600 text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105 shadow-lg"
+                      >
+                        Mulai Praktikum
+                      </Link>
+                      <Link
+                        href="/jadwal"
+                        className="bg-slate-700/80 hover:bg-slate-700 border border-slate-600 text-slate-200 font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105"
+                      >
+                        Lihat Jadwal
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* Kolom Gambar */}
+                  <div className="flex justify-center items-center">
+                    <div className="bg-slate-800/50 p-4 rounded-full shadow-2xl backdrop-blur-sm">
+                      <Image
+                        src="/lkj.png"
+                        alt="Logo Laboratorium Komputer dan Jaringan"
+                        width={250}
+                        height={250}
+                        priority
+                        className="drop-shadow-2xl"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </GlassCont>
+          </div>
+        </section>
+        
+        {/* --- SEKSI GAMBAR DENGAN TEKS OVERLAY --- */}
+        <section className="bg-slate-900 py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700 group">
+              <Image
+                src="/glass.avif"
+                alt="Suasana di dalam Laboratorium Komputer dan Jaringan"
+                layout="fill"
+                objectFit="cover"
+                className="transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 p-8 md:p-12">
+                <h2 className="text-3xl lg:text-4xl font-bold text-white">
+                  Tentang Laboratorium Komputer Jaringan
+                </h2>
+                <p className="mt-2 text-lg text-slate-300 max-w-2xl">
+                  Lihat lebih dekat suasana dan fasilitas yang kami sediakan.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- Visi & Misi Section --- */}
+        <section className="bg-slate-800 py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-start">
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold text-white">Visi</h2>
+              <p className="text-lg text-slate-400 italic">
+                "Menjadi laboratorium unggul yang menghasilkan lulusan kompeten
+                dan inovatif di bidang teknologi komputer dan jaringan, serta
+                mampu bersaing di tingkat nasional maupun internasional."
+              </p>
+            </div>
+            <div className="space-y-4">
+              <h2 className="text-3xl font-bold text-white">Misi</h2>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>
+                    Menyelenggarakan kegiatan praktikum yang berkualitas dan
+                    sesuai dengan perkembangan teknologi.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>
+                    Mendorong penelitian dan pengembangan di bidang komputer dan
+                    jaringan oleh mahasiswa dan dosen.
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>
+                    Menjalin kerjasama dengan industri untuk menyelaraskan
+                    kurikulum dan membuka peluang karir.
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* --- Lokasi Section --- */}
+        <section className="bg-slate-900 py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white">Kunjungi Kami</h2>
+              <p className="mt-4 text-slate-400">
+                Temukan lokasi kami di kampus untuk semua kebutuhan praktikum
+                Anda.
+              </p>
+            </div>
+            <div className="grid lg:grid-cols-5 gap-8 items-center">
+              <div className="lg:col-span-2 text-center lg:text-left">
+                <h3 className="text-xl font-bold text-white">Alamat</h3>
+                <p className="mt-2 text-slate-400">
+                  Gedung Fakultas Teknologi Informasi, Lantai 3<br />
+                  Universitas Andalas, Limau Manis<br />
+                  Padang, Sumatera Barat
+                </p>
+                <h3 className="text-xl font-bold text-white mt-6">
+                  Jam Operasional
+                </h3>
+                <p className="mt-2 text-slate-400">
+                  Senin - Jumat<br />
+                  08:00 - 16:00 WIB
+                </p>
+              </div>
+              <div className="lg:col-span-3 h-80 lg:h-96 rounded-xl overflow-hidden border-2 border-slate-700">
+                <MapComponent />
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <HomeFooter />
     </div>
   );
 }

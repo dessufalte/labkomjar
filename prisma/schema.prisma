@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  password  String 
+  posts     Post[]
+  createdAt DateTime @default(now())
+}
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String?
+  authorId  Int
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+model Prak{
+  id   Int  @id @default(autoincrement())
+  title String
+  desc String
+  modul Modul[]
+  img_url String
+}
+model Modul{
+  id Int @id @default(autoincrement())
+  judul_modul String
+  prakid Int
+  prak Prak @relation(fields: [prakid], references: [id])
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  title     String   // Judul gambar
+  url       String   // Lokasi gambar (path atau URL)
+  createdAt DateTime @default(now())
+}
+model Projek {
+  id        Int      @id @default(autoincrement())
+  title     String   // Judul gambar
+  url  String
+  developer String
+  desc String
+  lang String
+  createdAt DateTime @default(now())
+}
+model Dokumen {
+  id      Int      @id @default(autoincrement())
+  text    String
+  url     String
+  size    Int
+  date    DateTime @default(now())
+  sender  String
+  dokType DokType  @relation(fields: [dokTypeId], references: [id])
+  dokTypeId Int
+}
+model DokType {
+  id      Int       @id @default(autoincrement())
+  name    String
+  dokumen Dokumen[]
+}
