@@ -7,13 +7,12 @@ import GitHubRepoCard from "./_Components/GitHubRepoCard";
 import GitHubStats from "./_Components/GitHubStats";
 
 const BeritaArtikel = async () => {
-  // Cek apakah lingkungan saat ini adalah 'development'
-  if (process.env.IN_DEV === '1') {
+  if (process.env.IN_DEV === "1") {
     return (
       <div className="bg-slate-700 w-full min-h-screen">
         <Navbar />
         <div className="flex flex-col items-center justify-center h-[calc(100vh-80px)] text-center px-4">
-          {/* Ikon Development dari Font Awesome (sebagai SVG) */}
+
           <svg 
             className="w-16 h-16 text-cyan-400 mb-6 animate-spin" 
             xmlns="http://www.w3.org/2000/svg" 
@@ -48,91 +47,7 @@ const BeritaArtikel = async () => {
 
   return (
     <div className="bg-slate-700 w-full min-h-screen">
-      <Navbar />
-      <ThreeLayout>
-        {/* Sidebar with Stats */}
-        <div className="">
-          <GitHubStats 
-            totalRepos={repositories.length}
-            totalStars={totalStars}
-            totalForks={totalForks}
-            languages={languages}
-          />
-        </div>
 
-        {/* Main Content */}
-        <ListLayout>
-          <div className="space-y-8">
-            {/* Header */}
-            <div>
-              <h1 className="font-bold text-3xl text-slate-200 mb-2">
-                My Projects
-              </h1>
-              <p className="text-slate-400 text-sm leading-relaxed">
-                A collection of open source projects, experiments, and tools I've built. 
-                From web applications to developer utilities, these repositories showcase 
-                my journey in software development.
-              </p>
-            </div>
-
-            {/* Featured Projects */}
-            {featuredRepos.length > 0 && (
-              <div>
-                <h2 className="text-xl font-semibold text-slate-200 mb-4 flex items-center">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                  </svg>
-                  Featured Projects
-                </h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {featuredRepos.map((repo) => (
-                    <GitHubRepoCard key={repo.id} repo={repo} featured={true} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* All Other Projects */}
-            {otherRepos.length > 0 && (
-              <div>
-                <h2 className="text-xl font-semibold text-slate-200 mb-4 flex items-center">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-                  </svg>
-                  All Projects ({otherRepos.length})
-                </h2>
-                <div className="space-y-3">
-                  {otherRepos.map((repo) => (
-                    <GitHubRepoCard key={repo.id} repo={repo} featured={false} />
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Empty State */}
-            {repositories.length === 0 && (
-              <div className="text-center py-12">
-                <svg className="w-16 h-16 mx-auto text-slate-500 mb-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                </svg>
-                <h3 className="text-lg font-medium text-slate-300 mb-2">No repositories found</h3>
-                <p className="text-slate-500">Check your GitHub token and username configuration.</p>
-              </div>
-            )}
-
-            {/* View All on GitHub Link */}
-            <div className="flex flex-row hover:bg-cyan-700 hover:from-teal-700 transition-all ease-in justify-between items-center bg-gradient-to-r from-cyan-700 to-teal-700 text-white p-4 rounded-lg cursor-pointer">
-              <div>
-                <h3 className="font-semibold">View all projects on GitHub</h3>
-                <p className="text-sm text-slate-200">Explore more repositories and contributions</p>
-              </div>
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            </div>
-          </div>
-        </ListLayout>
-      </ThreeLayout>
     </div>
   );
 };

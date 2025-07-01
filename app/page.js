@@ -100,9 +100,9 @@ export default function Home() {
             <div className="space-y-4">
               <h2 className="text-3xl font-bold text-white">Visi</h2>
               <p className="text-lg text-slate-400 italic">
-                "Menjadi laboratorium unggul yang menghasilkan lulusan kompeten
+                &quot;Menjadi laboratorium unggul yang menghasilkan lulusan kompeten
                 dan inovatif di bidang teknologi komputer dan jaringan, serta
-                mampu bersaing di tingkat nasional maupun internasional."
+                mampu bersaing di tingkat nasional maupun internasional.&quot;
               </p>
             </div>
             <div className="space-y-4">
