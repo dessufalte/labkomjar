@@ -11,7 +11,7 @@ async function getPraktikumFromAPI() {
   const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
   
   // 2. Gabungkan base URL dengan path API untuk membuat URL absolut.
-  const apiUrl = `${baseUrl}/api/praktikum`;
+  const apiUrl = `/api/praktikum`;
 
   console.log(`[FETCH] Memanggil API di URL absolut: ${apiUrl}`);
 
