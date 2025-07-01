@@ -1,31 +1,52 @@
+// app/api/praktikum/route.js
+
 import prisma from "@/lib/prima";
 
-export async function GET() {
-  const praktikum = await prisma.prak.findMany();
-  return new Response(JSON.stringify(praktikum), { status: 200 });
-}
+export async function GET(request) {
+  console.log("📥 Masuk ke route handler");
 
-export async function POST(request) {
-  const { title, description } = await request.json();
-  const praktikum = await prisma.prak.create({
-    data: { title, description },
-  });
-  return new Response(JSON.stringify(praktikum), { status: 201 });
-}
+  try {
+    const praktikum = await prisma.Prak.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
 
-export async function PUT(request) {
-  const { id, title, description } = await request.json();
-  const praktikum = await prisma.prak.update({
-    where: { id },
-    data: { title, description },
-  });
-  return new Response(JSON.stringify(praktikum), { status: 200 });
-}
+    console.log("📤 Data berhasil diambil:", praktikum);
 
-export async function DELETE(request) {
-  const { id } = await request.json();
-  await prisma.prak.delete({
-    where: { id },
-  });
-  return new Response(null, { status: 204 });
+    return new Response(JSON.stringify(praktikum), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+  } catch (error) {
+    let message = "Unknown error";
+
+    // Tangani jika error adalah instance Error atau bukan object
+    if (error instanceof Error) {
+      message = error.message;
+    } else if (typeof error === "string") {
+      message = error;
+    } else if (typeof error === "object" && error !== null) {
+      try {
+        message = JSON.stringify(error);
+      } catch {
+        message = "[unserializable error object]";
+      }
+    }
+
+    console.error("❌ Error:", message);
+
+    return new Response(
+      JSON.stringify({ message: "Terjadi kesalahan pada server" }),
+      {
+        status: 500,
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  }
 }
