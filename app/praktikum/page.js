@@ -5,36 +5,13 @@ import Navbar from "../_Components/navbar";
 import PraktikumList from "./_Components/PraktikumList";
 
 // Fungsi untuk mengambil data dari API route internal kita
+// Hilangkan fetch
 async function getPraktikumFromAPI() {
-  // 1. Ambil base URL dari environment variable.
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || '';
-  
-  // 2. --- PERBAIKAN DI SINI ---
-  // Gabungkan baseUrl dengan path API untuk membuat URL absolut.
-  const apiUrl = `${baseUrl}/api/praktikum`;
-
-  console.log(`[FETCH] Memanggil API di URL absolut: ${apiUrl}`);
-
-  try {
-    // Sekarang fetch akan menggunakan URL lengkap seperti 'http://localhost:3000/api/praktikum'
-    const response = await fetch(apiUrl, { 
-      cache: 'no-store' 
-    });
-
-    if (!response.ok) {
-      throw new Error(`Gagal mengambil data dari API. Status: ${response.status}`);
-    }
-
-    return response.json();
-
-  } catch (error) {
-    // Log error yang lebih spesifik
-    console.error("Error di dalam getPraktikumFromAPI:", error.message);
-    // Kembalikan array kosong agar halaman tidak crash
-    return [];
-  }
+  const data = await prisma.Prak.findMany({
+    orderBy: { id: "asc" },
+  });
+  return data;
 }
-
 
 // Halaman ini tetap menjadi Server Component
 export default async function Praktikum() {

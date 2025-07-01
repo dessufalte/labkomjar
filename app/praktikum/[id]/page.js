@@ -1,35 +1,7 @@
-// app/praktikum/[id]/page.js
-
 import Navbar from "@/app/_Components/navbar";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
-// Fungsi untuk mengambil data dari API route dinamis kita
-async function getPraktikumDetailFromAPI(id) {
-  const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "";
-  const apiUrl = `${baseUrl}/api/praktikum/${id}`;
-
-  console.log(`[FETCH] Memanggil API detail di: ${apiUrl}`);
-
-  try {
-    const response = await fetch(apiUrl, { cache: "no-store" });
-
-    if (response.status === 404) {
-      return null;
-    }
-
-    if (!response.ok) {
-      throw new Error(
-        `Gagal mengambil data dari API. Status: ${response.status}`
-      );
-    }
-
-    return response.json();
-  } catch (error) {
-    console.error("Error di getPraktikumDetailFromAPI:", error.message);
-    return null;
-  }
-}
+import prisma from "@/lib/prima"; // langsung pakai prisma tanpa fetch
 
 // Komponen Ikon untuk file modul
 const ModuleIcon = () => (
@@ -49,14 +21,15 @@ const ModuleIcon = () => (
 );
 
 export default async function DetailPraktikum({ params }) {
-  // --- PERBAIKAN DI SINI ---
-  // Mengakses 'id' langsung dari 'params' tanpa destructuring.
-  const id = params.id;
+  const id = parseInt(params.id);
 
-  // Mengambil data dengan memanggil API kita
-  const praktikum = await getPraktikumDetailFromAPI(id);
+  const praktikum = await prisma.Prak.findUnique({
+    where: { id },
+    include: {
+      modul: true, // pastikan relasi modul ada di schema.prisma
+    },
+  });
 
-  // Jika praktikum tidak ditemukan (API mengembalikan 404 atau error), tampilkan halaman 404
   if (!praktikum) {
     notFound();
   }
@@ -102,10 +75,7 @@ export default async function DetailPraktikum({ params }) {
           {praktikum.modul && praktikum.modul.length > 0 ? (
             <div className="space-y-3">
               {praktikum.modul.map((modul) => {
-                const href = `/${encodeURIComponent(praktikum.title)}/Modul ${
-                  modul.id
-                }.pdf`;
-                console.log("Generated href:", href);
+                const href = `/${encodeURIComponent(praktikum.title)}/Modul ${modul.id}.pdf`;
                 return (
                   <a
                     key={modul.id}
