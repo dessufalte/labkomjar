@@ -3,7 +3,7 @@
 // Impor yang diperlukan
 import Navbar from "../_Components/navbar";
 import PraktikumList from "./_Components/PraktikumList";
-
+import prisma from "@/lib/prima";
 // Fungsi untuk mengambil data dari API route internal kita
 // Hilangkan fetch
 async function getPraktikumFromAPI() {
