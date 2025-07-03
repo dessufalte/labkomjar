@@ -2,15 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-// === DATA LOKASI (CONTOH) ===
-// Pastikan variabel ini ada di luar komponen atau diimpor
 const locations = [
-    { id: 1, name: 'Kantor Pusat', lat: -6.229728, lng: 106.827149 },
-    { id: 2, name: 'Cabang Sudirman', lat: -6.22533, lng: 106.822212 },
-    { id: 3, name: 'Gudang Logistik', lat: -6.23492, lng: 106.832291 },
+    { id: 1, name: 'Laboratorium Komputer Jaringan', lat: -0.9152498497080948, lng: 100.46107056722617 },
+    { id: 2, name: 'Universitas Andalas', lat: -0.9149443299833259, lng: 100.45822176981787 },
 ];
 
-// === STYLE PETA (CONTOH) ===
+
 const mapStyles = [
     { elementType: "geometry", stylers: [{ color: "#242f3e" }] },
     { elementType: "labels.text.stroke", stylers: [{ color: "#242f3e" }] },
@@ -20,7 +17,7 @@ const mapStyles = [
         elementType: "labels.text.fill",
         stylers: [{ color: "#d59563" }],
     },
-    // ... tambahkan style lain jika ada
+
 ];
 
 

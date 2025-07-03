@@ -60,7 +60,7 @@ const HomeFooter = () => {
           <div>
             <h3 className="text-sm font-semibold text-slate-200 tracking-wider uppercase">Kontak</h3>
             <div className="mt-4 space-y-2">
-              <p>Gedung FTI, Lantai 3<br/>Kampus Unand Limau Manis<br/>Padang, Sumatera Barat</p>
+              <p>Gedung FTI, Lantai 2<br/>Kampus Unand Limau Manis<br/>Padang, Sumatera Barat</p>
               <a href="mailto:lkj@fti.unand.ac.id" className="block hover:text-white transition-colors">lkj@fti.unand.ac.id</a>
             </div>
           </div>

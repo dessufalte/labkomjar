@@ -10,42 +10,52 @@ export default function Galeri() {
     {
       id: 1,
       imageUrl: "/galeri/lkj.png",
-      caption: "Kegiatan praktikum Jaringan Komputer.",
+      caption: " Laboratorium Jaringan Komputer.",
     },
     {
       id: 2,
-      imageUrl: "/galeri/gambar-2.png",
-      caption: "Sesi workshop Mikrotik bersama mahasiswa.",
+      imageUrl: "/galeri/2.jpeg",
+      caption: "Pelatihan Asisten Magang",
     },
     {
       id: 3,
-      imageUrl: "/galeri/gambar-3.jpg",
-      caption: "Suasana di dalam laboratorium.",
+      imageUrl: "/galeri/3.jpeg",
+      caption: "Pelatihan Asisten Magang",
     },
     {
       id: 4,
-      imageUrl: "/galeri/gambar-4.jpg",
-      caption: "Perakitan server untuk kebutuhan praktikum.",
+      imageUrl: "/galeri/4.jpeg",
+      caption: "Ruangan LKJ",
     },
     {
       id: 5,
-      imageUrl: "/galeri/gambar-5.jpg",
-      caption: "Foto bersama setelah acara seminar.",
+      imageUrl: "/galeri/5.jpeg",
+      caption: "Foto bersama setelah Presentasi Akhir Asisten Magang.",
     },
     {
       id: 6,
-      imageUrl: "/galeri/gambar-6.jpg",
-      caption: "Peralatan baru di laboratorium.",
+      imageUrl: "/galeri/6.jpeg",
+      caption: "Foto bersama rapat koordinasi dosen pembimbing",
     },
     {
       id: 7,
-      imageUrl: "/galeri/gambar-7.jpg",
-      caption: "Mahasiswa sedang fokus mengerjakan modul.",
+      imageUrl: "/galeri/7.jpeg",
+      caption: "Foto bersama asisten magang",
     },
     {
       id: 8,
-      imageUrl: "/galeri/gambar-8.jpg",
-      caption: "Presentasi hasil proyek akhir.",
+      imageUrl: "/galeri/8.jpeg",
+      caption: "Foto bersama Forum Perdana LKJ 2024",
+    },
+    {
+      id: 9,
+      imageUrl: "/galeri/9.jpeg",
+      caption: "Penyerahan Koordinator Dasar.",
+    },
+    {
+      id: 10,
+      imageUrl: "/galeri/10.jpeg",
+      caption: "Ujian penerimaan asisten magang.",
     },
   ];
 

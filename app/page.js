@@ -10,13 +10,19 @@ import FloatingIconsBackground from "./_Components/FloatingIcon";
 
 const teamMembers = [
   {
-    name: "Dr. Eng. Budi P.",
+    name: "Rifki Suwandi, MT",
     role: "Kepala Laboratorium",
     imageUrl: "/lkj.png",
   },
-  { name: "Agif Rahmat", role: "Koordinator Asisten", imageUrl: "/lkj.png" },
-  { name: "Siti Aisyah", role: "Asisten Jaringan", imageUrl: "/lkj.png" },
-  { name: "Putra Wijaya", role: "Asisten Pemrograman", imageUrl: "/lkj.png" },
+  { name: "Pera Yani", role: "Koordinator Dasar", imageUrl: "/lkj.png" },
+  { name: "Asti Zahra", role: "Sekretaris", imageUrl: "/lkj.png" },
+  { name: "Khairunnisak", role: "Koordinator Praktikum", imageUrl: "/lkj.png" },
+  { name: "Denny Rianto", role: "Koordinator Research & Development (Pemrograman)", imageUrl: "/lkj.png" },
+  { name: "Zahran Fikri", role: "Koordinator Research & Development (Jaringan)", imageUrl: "/lkj.png" },
+  { name: "Agum Medisa", role: "Koordinator Multimedia", imageUrl: "/lkj.png" },
+  { name: "Nasywa Nur Jahra", role: "Inventaris", imageUrl: "/lkj.png" },
+
+
 ];
 
 export default function Home() {
@@ -216,7 +222,7 @@ export default function Home() {
               <div className="lg:col-span-2 text-center lg:text-left">
                 <h3 className="text-xl font-bold text-white">Alamat</h3>
                 <p className="mt-2 text-slate-400">
-                  Gedung Fakultas Teknologi Informasi, Lantai 3<br />
+                  Gedung Fakultas Teknologi Informasi, Lantai 2<br />
                   Universitas Andalas, Limau Manis
                   <br />
                   Padang, Sumatera Barat
