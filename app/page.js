@@ -6,9 +6,18 @@ import MapComponent from "./_Components/map";
 import HomeFooter from "./_Components/homefooter";
 import Image from "next/image";
 import Link from "next/link";
-// --- PERBAIKAN DI SINI ---
-// Nama file harus cocok dengan file yang Anda buat: FloatingIconsBackground.js
 import FloatingIconsBackground from "./_Components/FloatingIcon";
+
+const teamMembers = [
+  {
+    name: "Dr. Eng. Budi P.",
+    role: "Kepala Laboratorium",
+    imageUrl: "/lkj.png",
+  },
+  { name: "Agif Rahmat", role: "Koordinator Asisten", imageUrl: "/lkj.png" },
+  { name: "Siti Aisyah", role: "Asisten Jaringan", imageUrl: "/lkj.png" },
+  { name: "Putra Wijaya", role: "Asisten Pemrograman", imageUrl: "/lkj.png" },
+];
 
 export default function Home() {
   return (
@@ -16,16 +25,13 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {/* --- Hero Section dengan Glass UI --- */}
         <section className="relative">
           <FloatingIconsBackground />
 
-          {/* Konten GlassCont sebagai Overlay */}
           <div className="relative z-10">
             <GlassCont>
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
-                  {/* Kolom Teks */}
                   <div className="text-center lg:text-left space-y-6">
                     <h1 className="text-4xl lg:text-5xl font-extrabold text-white tracking-tight drop-shadow-lg">
                       Selamat Datang di Laboratorium Komputer dan Jaringan
@@ -69,8 +75,111 @@ export default function Home() {
             </GlassCont>
           </div>
         </section>
-        
+
         {/* --- SEKSI GAMBAR DENGAN TEKS OVERLAY --- */}
+
+        {/* --- Visi & Misi Section --- */}
+        <section className="bg-slate-800 py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl font-bold text-white">Visi & Misi</h2>
+            <p className="mt-4 text-lg text-slate-400">
+              Menjadi laboratorium unggul yang menghasilkan lulusan kompeten dan
+              inovatif di bidang teknologi komputer dan jaringan.
+            </p>
+            <ul className="mt-8 space-y-4 text-left">
+              <li className="flex items-start p-4 bg-slate-700/50 rounded-lg border border-slate-700">
+                <svg
+                  className="w-6 h-6 text-cyan-400 mr-4 flex-shrink-0 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>
+                  Menyelenggarakan kegiatan praktikum yang berkualitas dan
+                  sesuai dengan perkembangan teknologi.
+                </span>
+              </li>
+              <li className="flex items-start p-4 bg-slate-700/50 rounded-lg border border-slate-700">
+                <svg
+                  className="w-6 h-6 text-cyan-400 mr-4 flex-shrink-0 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>
+                  Mendorong penelitian dan pengembangan di bidang komputer dan
+                  jaringan oleh mahasiswa dan dosen.
+                </span>
+              </li>
+              <li className="flex items-start p-4 bg-slate-700/50 rounded-lg border border-slate-700">
+                <svg
+                  className="w-6 h-6 text-cyan-400 mr-4 flex-shrink-0 mt-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                <span>
+                  Menjalin kerjasama dengan industri untuk menyelaraskan
+                  kurikulum dan membuka peluang karir.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section className="py-20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-white">
+                Struktur Organisasi
+              </h2>
+              <p className="mt-4 text-slate-400">
+                Tim kami yang berdedikasi untuk kemajuan laboratorium.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              {teamMembers.map((member) => (
+                <div
+                  key={member.name}
+                  className="text-center bg-slate-800 p-6 rounded-xl border border-slate-700 hover:-translate-y-2 transition-transform duration-300"
+                >
+                  <div className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-slate-700">
+                    <Image
+                      src={member.imageUrl}
+                      alt={`Foto ${member.name}`}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                  <h3 className="mt-4 text-lg font-bold text-white">
+                    {member.name}
+                  </h3>
+                  <p className="text-cyan-400">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
         <section className="bg-slate-900 py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="relative w-full h-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-700 group">
@@ -93,53 +202,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-
-        {/* --- Visi & Misi Section --- */}
-        <section className="bg-slate-800 py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-16 items-start">
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-white">Visi</h2>
-              <p className="text-lg text-slate-400 italic">
-                &quot;Menjadi laboratorium unggul yang menghasilkan lulusan kompeten
-                dan inovatif di bidang teknologi komputer dan jaringan, serta
-                mampu bersaing di tingkat nasional maupun internasional.&quot;
-              </p>
-            </div>
-            <div className="space-y-4">
-              <h2 className="text-3xl font-bold text-white">Misi</h2>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>
-                    Menyelenggarakan kegiatan praktikum yang berkualitas dan
-                    sesuai dengan perkembangan teknologi.
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>
-                    Mendorong penelitian dan pengembangan di bidang komputer dan
-                    jaringan oleh mahasiswa dan dosen.
-                  </span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-3 flex-shrink-0 mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span>
-                    Menjalin kerjasama dengan industri untuk menyelaraskan
-                    kurikulum dan membuka peluang karir.
-                  </span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
         {/* --- Lokasi Section --- */}
         <section className="bg-slate-900 py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -155,14 +217,16 @@ export default function Home() {
                 <h3 className="text-xl font-bold text-white">Alamat</h3>
                 <p className="mt-2 text-slate-400">
                   Gedung Fakultas Teknologi Informasi, Lantai 3<br />
-                  Universitas Andalas, Limau Manis<br />
+                  Universitas Andalas, Limau Manis
+                  <br />
                   Padang, Sumatera Barat
                 </p>
                 <h3 className="text-xl font-bold text-white mt-6">
                   Jam Operasional
                 </h3>
                 <p className="mt-2 text-slate-400">
-                  Senin - Jumat<br />
+                  Senin - Jumat
+                  <br />
                   08:00 - 16:00 WIB
                 </p>
               </div>
